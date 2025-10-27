@@ -32,18 +32,20 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-20 px-6">
+    <section id="contact" className="py-24 px-6 bg-muted/30">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          Get in <span className="text-primary">Touch</span>
-        </h2>
-        <p className="text-muted-foreground mb-12 text-lg">
-          Let's discuss how I can help transform your organization
-        </p>
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Let's Work Together
+          </h2>
+          <p className="text-lg text-muted-foreground font-light">
+            Ready to transform your organization? Get in touch to discuss how I can help
+          </p>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2">
-            <Card className="p-6 md:p-8 bg-card border-border">
+            <Card className="p-8 bg-card border border-border shadow-[var(--shadow-card)]">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -116,7 +118,7 @@ const Contact = () => {
           </div>
 
           <div className="space-y-6">
-            <Card className="p-6 bg-card border-border hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+            <Card className="p-6 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300">
               <div className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-primary mt-1" />
                 <div>
@@ -128,7 +130,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-6 bg-card border-border hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+            <Card className="p-6 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300">
               <div className="flex items-start gap-3">
                 <Phone className="h-5 w-5 text-primary mt-1" />
                 <div>
@@ -140,7 +142,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-6 bg-card border-border hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+            <Card className="p-6 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300">
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary mt-1" />
                 <div>
@@ -152,7 +154,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-6 bg-card border-border hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+            <Card className="p-6 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300">
               <div className="flex items-start gap-3">
                 <Linkedin className="h-5 w-5 text-primary mt-1" />
                 <div>

@@ -46,17 +46,22 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section className="py-20 px-6 bg-secondary/30">
+    <section id="experience" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12">
-          Professional <span className="text-primary">Experience</span>
-        </h2>
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Professional Journey
+          </h2>
+          <p className="text-lg text-muted-foreground font-light">
+            15+ years of strategic leadership across diverse industries
+          </p>
+        </div>
 
         <div className="space-y-6">
           {experiences.map((exp, index) => (
             <Card
               key={index}
-              className="p-6 md:p-8 bg-card border-border hover:shadow-[var(--shadow-card-hover)] hover:border-primary/30 transition-all duration-300"
+              className="p-8 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300"
             >
               <div className="space-y-4">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">

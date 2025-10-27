@@ -2,41 +2,52 @@ import { Card } from "@/components/ui/card";
 
 const About = () => {
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-6xl mx-auto animate-slide-up">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12">
-          About <span className="text-primary">Me</span>
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <Card className="p-8 bg-card border-border hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
-            <h3 className="text-2xl font-bold mb-4 text-primary">Professional Mission</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              I specialize in transforming organizations through strategic HR and finance leadership. 
-              With a proven track record of restructuring operations, implementing compliance frameworks, 
-              and building high-performance teams, I help organizations navigate complex transitions 
-              and achieve sustainable growth.
-            </p>
-          </Card>
-
-          <Card className="p-8 bg-card border-border hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
-            <h3 className="text-2xl font-bold mb-4 text-primary">Core Expertise</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              My approach combines strategic thinking with hands-on execution. From corporate restructuring 
-              and financial optimization to talent development and operational excellence, I deliver results 
-              that create lasting value. I'm passionate about speaking at conferences and consulting with 
-              organizations ready to transform.
-            </p>
-          </Card>
+    <section id="about" className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Building systems that{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">empower growth</span>
+              <span className="absolute bottom-1 left-0 w-full h-3 bg-[hsl(var(--color-blue))] -rotate-1 -z-0" />
+            </span>
+          </h2>
+          <p className="text-lg text-muted-foreground font-light leading-relaxed">
+            Strategic leadership in HR, finance, and operational excellence 
+            that transforms challenges into sustainable competitive advantages
+          </p>
         </div>
 
-        <Card className="mt-8 p-8 bg-secondary/50 border-primary/20">
-          <p className="text-lg text-center font-medium">
-            "Strategic leadership isn't just about making decisions—it's about{" "}
-            <span className="text-primary">building systems that enable sustainable growth</span>{" "}
-            and empowering teams to reach their full potential."
-          </p>
-        </Card>
+        <div className="grid md:grid-cols-2 gap-6">
+          <Card className="p-8 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-lg bg-[hsl(var(--color-yellow))] flex items-center justify-center">
+                <span className="text-2xl">🎯</span>
+              </div>
+              <h3 className="text-2xl font-bold">Professional Mission</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                I specialize in transforming organizations through strategic HR and finance leadership. 
+                With a proven track record of restructuring operations, implementing compliance frameworks, 
+                and building high-performance teams, I help organizations navigate complex transitions 
+                and achieve sustainable growth.
+              </p>
+            </div>
+          </Card>
+
+          <Card className="p-8 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-lg bg-[hsl(var(--color-purple))] flex items-center justify-center">
+                <span className="text-2xl">💡</span>
+              </div>
+              <h3 className="text-2xl font-bold">Core Expertise</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                My approach combines strategic thinking with hands-on execution. From corporate restructuring 
+                and financial optimization to talent development and operational excellence, I deliver results 
+                that create lasting value. Available for speaking engagements and organizational consulting.
+              </p>
+            </div>
+          </Card>
+        </div>
       </div>
     </section>
   );

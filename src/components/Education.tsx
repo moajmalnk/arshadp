@@ -44,11 +44,16 @@ const certifications = [
 
 const Education = () => {
   return (
-    <section className="py-20 px-6 bg-secondary/30">
+    <section className="py-24 px-6 bg-muted/30">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12">
-          Education & <span className="text-primary">Credentials</span>
-        </h2>
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Education & Credentials
+          </h2>
+          <p className="text-lg text-muted-foreground font-light">
+            Academic foundation and professional certifications
+          </p>
+        </div>
 
         <div className="space-y-8">
           <div>
@@ -60,7 +65,7 @@ const Education = () => {
               {educationData.map((edu, index) => (
                 <Card
                   key={index}
-                  className="p-6 bg-card border-border hover:shadow-[var(--shadow-card-hover)] hover:border-primary/30 transition-all duration-300"
+                  className="p-6 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300"
                 >
                   <h4 className="text-xl font-bold text-primary mb-2">{edu.degree}</h4>
                   <p className="text-foreground font-medium mb-1">{edu.institution}</p>
@@ -85,7 +90,7 @@ const Education = () => {
               {certifications.map((cert, index) => (
                 <Card
                   key={index}
-                  className="p-4 bg-card border-border hover:shadow-[var(--shadow-card-hover)] hover:border-primary/30 transition-all duration-300"
+                  className="p-4 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300"
                 >
                   <p className="font-bold text-foreground mb-1">{cert.name}</p>
                   <div className="flex items-center justify-between text-sm">

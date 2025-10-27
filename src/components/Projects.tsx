@@ -40,14 +40,16 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section className="py-20 px-6">
+    <section id="projects" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          Featured <span className="text-primary">Projects</span>
-        </h2>
-        <p className="text-muted-foreground mb-12 text-lg">
-          Strategic initiatives that delivered measurable impact
-        </p>
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Featured Projects
+          </h2>
+          <p className="text-lg text-muted-foreground font-light">
+            Strategic initiatives that delivered measurable impact
+          </p>
+        </div>
 
         <div className="space-y-8">
           {projects.map((project, index) => {
@@ -55,7 +57,7 @@ const Projects = () => {
             return (
               <Card
                 key={index}
-                className="p-6 md:p-8 bg-card border-border hover:shadow-[var(--shadow-card-hover)] hover:border-primary/30 transition-all duration-300"
+                className="p-8 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300"
               >
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">

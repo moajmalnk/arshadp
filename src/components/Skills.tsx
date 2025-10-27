@@ -44,25 +44,41 @@ const skillCategories = [
 ];
 
 const Skills = () => {
+  const colors = [
+    'hsl(var(--color-yellow))',
+    'hsl(var(--color-blue))',
+    'hsl(var(--color-purple))',
+    'hsl(var(--color-green))'
+  ];
+
   return (
-    <section className="py-20 px-6">
+    <section className="py-24 px-6 bg-muted/30">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12">
-          Core <span className="text-primary">Skills</span>
-        </h2>
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Core Competencies
+          </h2>
+          <p className="text-lg text-muted-foreground font-light">
+            Strategic expertise across leadership, operations, and transformation
+          </p>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {skillCategories.map((category, index) => (
             <Card
               key={index}
-              className="p-6 bg-card border-border hover:shadow-[var(--shadow-card-hover)] hover:border-primary/30 transition-all duration-300"
+              className="p-8 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300"
+              style={{
+                borderTopWidth: '4px',
+                borderTopColor: colors[index % colors.length]
+              }}
             >
-              <h3 className="text-xl font-bold text-primary mb-4">{category.category}</h3>
+              <h3 className="text-xl font-bold mb-4">{category.category}</h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1.5 bg-secondary/50 text-foreground rounded-md text-sm border border-border hover:border-primary/40 transition-colors"
+                    className="px-3 py-1.5 bg-muted text-foreground rounded-full text-sm font-medium"
                   >
                     {skill}
                   </span>
