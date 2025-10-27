@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const scrollToSection = (id: string) => {
@@ -47,6 +48,7 @@ const Navigation = () => {
           </div>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             <Button
               onClick={() => scrollToSection('contact')}
               size="sm"

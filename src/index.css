@@ -50,6 +50,47 @@ All colors MUST be HSL.
     --color-purple: 270 60% 94%;
     --color-green: 142 76% 92%;
   }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    /* Custom design tokens - Dark mode */
+    --gradient-subtle: linear-gradient(180deg, hsl(240 10% 3.9%), hsl(240 10% 5%));
+    --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.3);
+    --shadow-card-hover: 0 4px 12px 0 hsl(0 0% 0% / 0.5);
+    
+    /* Category colors - Dark mode */
+    --color-yellow: 48 96% 40%;
+    --color-blue: 204 94% 45%;
+    --color-purple: 270 60% 50%;
+    --color-green: 142 76% 40%;
+  }
 }
 
 @layer base {
