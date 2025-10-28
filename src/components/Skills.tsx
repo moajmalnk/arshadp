@@ -53,7 +53,7 @@ const Skills = () => {
         {/* Section Label */}
         <div 
           ref={ref}
-          className={`mb-20 transition-all duration-700 ${
+          className={`mb-16 transition-all duration-700 ${
             isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -61,37 +61,40 @@ const Skills = () => {
         </div>
 
         {/* Skills Cards - Horizontal Layout */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           {skillCategories.map((category, index) => {
-            const delay = index * 100;
+            const delay = index * 80;
             
             return (
               <Card
                 key={index}
-                className="bg-card border border-border rounded-lg transition-all duration-700"
+                className="bg-card border border-border rounded-lg transition-all duration-700 hover:border-border/80"
                 style={{
                   opacity: isIntersecting ? 1 : 0,
                   transform: isIntersecting ? 'translateY(0)' : 'translateY(20px)',
                   transition: `all 0.7s ease-out ${delay}ms`
                 }}
               >
-                <div className="p-6 md:p-8 flex items-center gap-6 md:gap-8">
+                <div className="p-5 md:p-7 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
                   {/* Section Label */}
-                  <div className="flex-shrink-0">
-                    <span className="text-base md:text-lg font-medium whitespace-nowrap">
+                  <div className="flex-shrink-0 min-w-[180px] md:min-w-[220px]">
+                    <span className="text-base font-medium tracking-tight">
                       {category.category}
                     </span>
                   </div>
 
-                  {/* Vertical Separator */}
-                  <div className="w-px h-12 bg-border flex-shrink-0" />
+                  {/* Vertical Separator - Hidden on mobile */}
+                  <div className="hidden md:block w-px h-10 bg-border/60 flex-shrink-0" />
+
+                  {/* Horizontal Separator - Visible on mobile */}
+                  <div className="md:hidden w-full h-px bg-border/60" />
 
                   {/* Skills Badges */}
-                  <div className="flex flex-wrap items-center gap-3 md:gap-4">
+                  <div className="flex flex-wrap items-center gap-2.5 flex-1">
                     {category.skills.map((skill, i) => (
                       <span
                         key={i}
-                        className="px-4 py-2 bg-muted/50 text-foreground rounded-md text-sm font-medium border border-border/50"
+                        className="px-3.5 py-2 bg-muted/40 text-foreground rounded-[6px] text-sm font-medium border border-border/40 hover:bg-muted/60 hover:border-border/60 transition-colors duration-200"
                       >
                         {skill}
                       </span>
