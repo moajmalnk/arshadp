@@ -41,6 +41,16 @@ const skillCategories = [
       "Data Analytics",
       "Project Management"
     ]
+  },
+  {
+    category: "Administration",
+    skills: [
+      "Office Management",
+      "Policy Development",
+      "Administrative Operations",
+      "Vendor Management",
+      "Documentation & Reporting"
+    ]
   }
 ];
 
@@ -53,11 +63,14 @@ const Skills = () => {
         {/* Section Label */}
         <div 
           ref={ref}
-          className={`mb-16 transition-all duration-700 ${
+          className={`mb-12 transition-all duration-700 ${
             isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
           <span className="text-sm font-medium tracking-wider uppercase">// Core Competencies</span>
+          <p className="text-base md:text-lg text-muted-foreground mt-4 leading-relaxed max-w-4xl">
+            Strategic Leader | HR, Finance & Administration Expert | Driving Business Transformation, Operational Excellence, and Organizational Growth
+          </p>
         </div>
 
         {/* Skills Cards - Horizontal Layout */}

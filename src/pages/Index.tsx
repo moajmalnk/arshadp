@@ -2,7 +2,7 @@ import { lazy, Suspense, useState } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import { SectionSkeleton } from "@/components/SkeletonCard";
-import { Github, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react";
+import { MessageCircle, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -60,70 +60,72 @@ const Index = () => {
       <footer className="py-16 px-6 md:px-12 lg:px-24 border-t border-border bg-background">
         <div className="max-w-7xl mx-auto">
           {/* Top Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 mb-16">
+          <div className="space-y-8 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8 mb-16">
             {/* Logo Section */}
-            <div className="space-y-4 lg:col-span-1">
+            <div className="space-y-4 md:col-span-2 lg:col-span-1">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                   <span className="text-primary-foreground font-bold text-lg">AP</span>
                 </div>
                 <span className="text-xl font-bold">Arshad Palapra</span>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-                Strategic leader transforming organizations through innovative HR and operational excellence.
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
+                Strategic Leader | HR, Finance & Administration Expert | Driving Business Transformation, Operational Excellence, and Organizational Growth
               </p>
             </div>
 
-            {/* Navigation Columns */}
-            <div className="space-y-4">
-              <h3 className="font-bold text-foreground mb-4">Explore</h3>
-              <ul className="space-y-3">
-                <li>
-                  <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#experience" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Experience
-                  </a>
-                </li>
-                <li>
-                  <a href="#skills" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Skills
-                  </a>
-                </li>
-                <li>
-                  <a href="#journey" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Journey
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {/* Navigation Columns - Side by side ONLY on mobile */}
+            <div className="grid grid-cols-2 gap-6 md:contents">
+              <div className="space-y-4 md:col-span-1 lg:col-span-1">
+                <h3 className="font-bold text-foreground mb-4">Explore</h3>
+                <ul className="space-y-3">
+                  <li>
+                    <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      About
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#experience" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Experience
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#skills" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Skills
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#journey" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Journey
+                    </a>
+                  </li>
+                </ul>
+              </div>
 
-            <div className="space-y-4">
-              <h3 className="font-bold text-foreground mb-4">Resources</h3>
-              <ul className="space-y-3">
-                <li>
-                  <a href="#education" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Education
-                  </a>
-                </li>
-                <li>
-                  <a href="#testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Testimonials
-                  </a>
-                </li>
-                <li>
-                  <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Contact
-                  </a>
-                </li>
-              </ul>
+              <div className="space-y-4 md:col-span-1 lg:col-span-1">
+                <h3 className="font-bold text-foreground mb-4">Resources</h3>
+                <ul className="space-y-3">
+                  <li>
+                    <a href="#education" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Education
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Testimonials
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             {/* Newsletter Section */}
-            <div className="space-y-4">
+            <div className="space-y-4 md:col-span-2 lg:col-span-1">
               <h3 className="font-bold text-foreground mb-4">Newsletter</h3>
               <p className="text-sm text-muted-foreground mb-4">
                 Stay updated with insights on leadership, HR transformation, and business strategy.
@@ -160,12 +162,12 @@ const Index = () => {
             {/* Social Media Icons */}
             <div className="flex items-center gap-3">
               <a
-                href="https://github.com"
+                href="https://wa.me/917025521132"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-muted/50 hover:bg-muted flex items-center justify-center transition-colors"
               >
-                <Github className="h-5 w-5 text-foreground" />
+                <MessageCircle className="h-5 w-5 text-foreground" />
               </a>
               <a
                 href="https://linkedin.com/in/arshadpalapra"
