@@ -5,9 +5,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useIntersection } from "@/hooks/use-intersection";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { ref, isIntersecting } = useIntersection({ threshold: 0.1, triggerOnce: true });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,9 +34,14 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-muted/30">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-16 text-center max-w-3xl mx-auto">
+    <section id="contact" className="py-24 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div 
+          ref={ref}
+          className={`mb-16 text-center max-w-3xl mx-auto transition-all duration-700 ${
+            isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Let's Work Together
           </h2>
@@ -43,9 +50,16 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-2">
-            <Card className="p-8 bg-card border border-border shadow-[var(--shadow-card)]">
+        <div className="grid md:grid-cols-3 gap-4">
+          <div 
+            className="md:col-span-2"
+            style={{
+              opacity: isIntersecting ? 1 : 0,
+              transform: isIntersecting ? 'translateX(0)' : 'translateX(-30px)',
+              transition: 'all 0.7s ease-out'
+            }}
+          >
+            <Card className="p-6 md:p-8 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-all duration-500">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -117,8 +131,15 @@ const Contact = () => {
             </Card>
           </div>
 
-          <div className="space-y-6">
-            <Card className="p-6 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300">
+          <div 
+            className="space-y-4"
+            style={{
+              opacity: isIntersecting ? 1 : 0,
+              transform: isIntersecting ? 'translateX(0)' : 'translateX(30px)',
+              transition: 'all 0.7s ease-out 200ms'
+            }}
+          >
+            <Card className="p-6 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-all duration-500 hover:-translate-y-1">
               <div className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-primary mt-1" />
                 <div>

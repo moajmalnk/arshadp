@@ -1,105 +1,153 @@
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Building2, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
+import { useIntersection } from "@/hooks/use-intersection";
 
 const experiences = [
   {
     title: "General Manager",
-    company: "Albedo International",
-    location: "Dubai, UAE",
-    period: "2020 - Present",
+    company: "Albedo Private Limited",
+    location: "Manjeri, Kerala, India",
+    period: "Jan 2024 - Present",
     type: "Full-Time",
     highlights: [
-      "Led legal transition to Private Limited Company, streamlining governance",
-      "Reduced operational overhead by 30% through strategic restructuring",
-      "Implemented compliance frameworks across 3 international offices"
+      "Successfully orchestrated the transition from Albedo Educator partnership to a private limited company, establishing a strong foundation for future growth",
+      "Spearheading strategic operations, team alignment, and compliance management",
+      "Leading with a forward-thinking approach to ensure operational excellence and sustainable success"
     ],
-    skills: ["Corporate Structuring", "Compliance", "Operations Management"]
+    skills: ["Strategic Leadership", "Corporate Structuring", "Financial Planning", "Compliance", "Operations Management"]
   },
   {
-    title: "HR & Finance Director",
-    company: "TechVentures Inc",
-    location: "Dubai, UAE",
-    period: "2016 - 2020",
+    title: "Startup India Consultant",
+    company: "Albedo Private Limited",
+    location: "Manjeri, Kerala, India",
+    period: "Jan 2024 - May 2024",
     type: "Full-Time",
     highlights: [
-      "Built HR department from ground up for 200+ employee organization",
-      "Achieved 95% employee retention through strategic talent programs",
-      "Optimized financial operations resulting in 25% cost savings"
+      "Guided Albedo's registration under the Startup India initiative, ensuring adherence to regulatory standards",
+      "Managed legal structuring, compliance documentation, and startup strategy formulation",
+      "Delivered actionable insights to support the company's growth trajectory"
     ],
-    skills: ["HR Strategy", "Financial Planning", "Team Development"]
+    skills: ["Regulatory Compliance", "Business Development", "Startup Strategy", "Legal Structuring"]
   },
   {
-    title: "Senior Finance Manager",
-    company: "Global Solutions Ltd",
-    location: "Mumbai, India",
-    period: "2012 - 2016",
+    title: "HR & Finance Head",
+    company: "Albedo Educator",
+    location: "Manjeri, Kerala, India",
+    period: "Nov 2022 - Jan 2024",
     type: "Full-Time",
     highlights: [
-      "Managed $10M+ budget across multiple business units",
-      "Implemented ERP system improving reporting efficiency by 40%",
-      "Led cross-functional team of 15 finance professionals"
+      "Enhanced employee engagement through innovative HR policies and leadership development programs",
+      "Streamlined budgeting and financial operations, achieving cost savings and efficiency improvements",
+      "Played a pivotal role in scaling operations, aligning HR and finance with business objectives"
     ],
-    skills: ["Budget Management", "ERP Systems", "Financial Analysis"]
+    skills: ["HR Policy Design", "Financial Planning", "Talent Development", "Cost Management"]
+  },
+  {
+    title: "HR Assistant",
+    company: "Albedo Educator",
+    location: "Manjeri, Kerala, India",
+    period: "Nov 2021 - May 2022",
+    type: "Full-Time",
+    highlights: [
+      "Facilitated seamless recruitment and onboarding processes, enhancing team synergy",
+      "Supported payroll and HR compliance, contributing to operational continuity",
+      "Collaborated on employee engagement strategies to boost morale and productivity"
+    ],
+    skills: ["Recruitment", "HR Compliance", "Payroll Management", "Employee Engagement"]
   }
 ];
 
 const Experience = () => {
+  const { ref, isIntersecting } = useIntersection({ threshold: 0.1, triggerOnce: true });
+
   return (
-    <section id="experience" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-16 text-center max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Professional Journey
-          </h2>
-          <p className="text-lg text-muted-foreground font-light">
-            15+ years of strategic leadership across diverse industries
-          </p>
+    <section id="experience" className="py-32 px-6 md:px-12 lg:px-24">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Label */}
+        <div 
+          ref={ref}
+          className={`mb-20 transition-all duration-700 ${
+            isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <span className="text-sm font-medium tracking-wider uppercase">// Experience</span>
         </div>
 
-        <div className="space-y-6">
-          {experiences.map((exp, index) => (
-            <Card
-              key={index}
-              className="p-8 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300"
-            >
-              <div className="space-y-4">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-primary mb-2">{exp.title}</h3>
-                    <div className="flex items-center gap-2 text-muted-foreground mb-1">
-                      <Building2 className="h-4 w-4" />
-                      <span className="font-medium">{exp.company}</span>
-                      <span>•</span>
-                      <span>{exp.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Calendar className="h-4 w-4" />
-                      <span>{exp.period}</span>
-                      <Badge variant="secondary" className="ml-2">{exp.type}</Badge>
+        {/* Experience Items */}
+        <div className="space-y-32">
+          {experiences.map((exp, index) => {
+            const delay = index * 100;
+            const number = String(index + 1).padStart(2, '0');
+            return (
+              <div
+                key={index}
+                className={`flex gap-12 md:gap-16 lg:gap-20 transition-all duration-700 ${
+                  isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{
+                  transitionDelay: `${delay}ms`
+                }}
+              >
+                {/* Large Number */}
+                <div className="flex-shrink-0">
+                  <span className="text-[120px] md:text-[160px] lg:text-[200px] font-bold leading-none opacity-20 select-none">
+                    {number}
+                  </span>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 pt-8">
+                  {/* Title and Company */}
+                  <div className="mb-6">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-3">
+                      {exp.title}
+                    </h3>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-base">
+                        <span className="font-medium">{exp.company}</span>
+                        <span className="text-muted-foreground">•</span>
+                        <span className="text-muted-foreground">{exp.location}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Calendar className="h-4 w-4" />
+                        <span>{exp.period}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <ul className="space-y-2">
-                  {exp.highlights.map((highlight, i) => (
-                    <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                      <span className="text-primary mt-1">▸</span>
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
+                  {/* Description */}
+                  <p className="text-muted-foreground mb-8 leading-relaxed max-w-3xl">
+                    3+ years of strategic leadership driving business transformation and organizational growth
+                  </p>
 
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {exp.skills.map((skill, i) => (
-                    <Badge key={i} variant="outline" className="border-primary/30 text-primary">
-                      {skill}
-                    </Badge>
-                  ))}
+                  {/* Highlights List */}
+                  <div className="space-y-0 border-t border-border">
+                    {exp.highlights.map((highlight, i) => (
+                      <div key={i} className="py-4 border-b border-border">
+                        <div className="flex items-start justify-between gap-4">
+                          <span className="flex-1 text-muted-foreground leading-relaxed">
+                            {highlight}
+                          </span>
+                          <span className="text-2xl font-bold text-muted-foreground/30 flex-shrink-0">
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Skills */}
+                  <div className="flex flex-wrap gap-3 mt-8">
+                    {exp.skills.map((skill, i) => (
+                      <span key={i} className="text-sm text-muted-foreground">
+                        {skill}
+                        {i < exp.skills.length - 1 && <span className="mx-2">•</span>}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </Card>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

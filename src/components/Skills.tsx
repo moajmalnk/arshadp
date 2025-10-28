@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { useIntersection } from "@/hooks/use-intersection";
 
 const skillCategories = [
   {
@@ -44,48 +45,62 @@ const skillCategories = [
 ];
 
 const Skills = () => {
-  const colors = [
-    'hsl(var(--color-yellow))',
-    'hsl(var(--color-blue))',
-    'hsl(var(--color-purple))',
-    'hsl(var(--color-green))'
-  ];
+  const { ref, isIntersecting } = useIntersection({ threshold: 0.1, triggerOnce: true });
 
   return (
-    <section className="py-24 px-6 bg-muted/30">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-16 text-center max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Core Competencies
-          </h2>
-          <p className="text-lg text-muted-foreground font-light">
-            Strategic expertise across leadership, operations, and transformation
-          </p>
+    <section id="skills" className="py-32 px-6 md:px-12 lg:px-24">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Label */}
+        <div 
+          ref={ref}
+          className={`mb-20 transition-all duration-700 ${
+            isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <span className="text-sm font-medium tracking-wider uppercase">// Core Competencies</span>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {skillCategories.map((category, index) => (
-            <Card
-              key={index}
-              className="p-8 bg-card border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300"
-              style={{
-                borderTopWidth: '4px',
-                borderTopColor: colors[index % colors.length]
-              }}
-            >
-              <h3 className="text-xl font-bold mb-4">{category.category}</h3>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1.5 bg-muted text-foreground rounded-full text-sm font-medium"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </Card>
-          ))}
+        {/* Skills Cards - Horizontal Layout */}
+        <div className="space-y-6">
+          {skillCategories.map((category, index) => {
+            const delay = index * 100;
+            
+            return (
+              <Card
+                key={index}
+                className="bg-card border border-border rounded-lg transition-all duration-700"
+                style={{
+                  opacity: isIntersecting ? 1 : 0,
+                  transform: isIntersecting ? 'translateY(0)' : 'translateY(20px)',
+                  transition: `all 0.7s ease-out ${delay}ms`
+                }}
+              >
+                <div className="p-6 md:p-8 flex items-center gap-6 md:gap-8">
+                  {/* Section Label */}
+                  <div className="flex-shrink-0">
+                    <span className="text-base md:text-lg font-medium whitespace-nowrap">
+                      {category.category}
+                    </span>
+                  </div>
+
+                  {/* Vertical Separator */}
+                  <div className="w-px h-12 bg-border flex-shrink-0" />
+
+                  {/* Skills Badges */}
+                  <div className="flex flex-wrap items-center gap-3 md:gap-4">
+                    {category.skills.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-4 py-2 bg-muted/50 text-foreground rounded-md text-sm font-medium border border-border/50"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
