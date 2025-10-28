@@ -1,8 +1,11 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import { SectionSkeleton } from "@/components/SkeletonCard";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 // Lazy load components below the fold for performance
 const About = lazy(() => import("@/components/About"));
@@ -14,6 +17,20 @@ const Testimonials = lazy(() => import("@/components/Testimonials"));
 const Contact = lazy(() => import("@/components/Contact"));
 
 const Index = () => {
+  const { toast } = useToast();
+  const [email, setEmail] = useState("");
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      toast({
+        title: "Subscribed!",
+        description: "Thank you for subscribing to our newsletter.",
+      });
+      setEmail("");
+    }
+  };
+
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
@@ -43,15 +60,18 @@ const Index = () => {
       <footer className="py-16 px-6 md:px-12 lg:px-24 border-t border-border bg-background">
         <div className="max-w-7xl mx-auto">
           {/* Top Section */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 mb-16">
             {/* Logo Section */}
-            <div className="space-y-4">
+            <div className="space-y-4 lg:col-span-1">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                   <span className="text-primary-foreground font-bold text-lg">AP</span>
                 </div>
                 <span className="text-xl font-bold">Arshad Palapra</span>
               </div>
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+                Strategic leader transforming organizations through innovative HR and operational excellence.
+              </p>
             </div>
 
             {/* Navigation Columns */}
@@ -102,20 +122,31 @@ const Index = () => {
               </ul>
             </div>
 
+            {/* Newsletter Section */}
             <div className="space-y-4">
-              <h3 className="font-bold text-foreground mb-4">Company</h3>
-              <ul className="space-y-3">
-                <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Terms & Conditions
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Privacy
-                  </a>
-                </li>
-              </ul>
+              <h3 className="font-bold text-foreground mb-4">Newsletter</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Stay updated with insights on leadership, HR transformation, and business strategy.
+              </p>
+              <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+                <div className="flex gap-2">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="h-10 bg-muted/50 border-border text-sm"
+                  />
+                  <Button
+                    type="submit"
+                    size="icon"
+                    className="h-10 w-10 bg-foreground hover:bg-foreground/90 text-background flex-shrink-0"
+                  >
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </div>
+              </form>
             </div>
           </div>
 
