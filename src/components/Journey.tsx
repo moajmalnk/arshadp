@@ -20,16 +20,14 @@ const milestones = [
     organization: "Albedo Educator",
     description: "Began professional journey in HR, building foundational expertise in recruitment, compliance, and talent management."
   },
-  {
-    year: "2020",
-    title: "Professional Certification",
-    organization: "CMA",
-    description: "Earned Certified Management Accountant (CMA) certification, establishing expertise in financial management and strategic planning."
-  }
+  
 ];
 
 const Journey = () => {
   const { ref, isIntersecting } = useIntersection({ threshold: 0.1, triggerOnce: true });
+
+  // Reverse the journey order for display
+  const orderedMilestones = [...milestones].reverse();
 
   // Staggered positions for zig-zag layout
   const getCardPosition = (index: number) => {
@@ -75,7 +73,7 @@ const Journey = () => {
 
         {/* Journey Cards - Staggered Layout */}
         <div className="relative min-h-[900px] md:min-h-[1100px]">
-          {milestones.map((milestone, index) => {
+          {orderedMilestones.map((milestone, index) => {
             const delay = index * 100;
             const number = String(index + 1).padStart(2, '0');
             const position = getCardPosition(index);
